@@ -51,22 +51,8 @@
 	<body>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script>
-        // Your web app's Firebase configuration
-        const firebaseConfig = {
-			apiKey: "AIzaSyCiRwF5qs7mckhwZyphlKdqaz_ko9ADl9E",
-			authDomain: "tiziana-15.firebaseapp.com",
-			projectId: "tiziana-15",
-			storageBucket: "tiziana-15.appspot.com",
-			messagingSenderId: "652038035833",
-			appId: "1:652038035833:web:4938acb9dd7392c15e37a8"
-        	//   databaseURL: "xxx",
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-		const db = firebase.firestore()
-    </script>
+    <script src="js/vars.js"></script>
+	<script src="js/firebase.js"></script>
 	<div class="fh5co-loader"></div>
 	
 	<div id="page">
@@ -76,7 +62,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t">
+					<div class="display-t" style="margin-top: 5em;">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1 class="name-header">Sol</h1>
 							<h2><strong style="color:black;">¡Acompañame a festejar mis 15!</strong></h2>
@@ -90,36 +76,55 @@
 		</div>
 	</header>
 
-	<!-- <div id="fh5co-couple">
+	<!-- Detalles evento -->
+	<div id="fh5co-evento" class="fh5co-bg">
+		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2>Hola!</h2>
-					<h3><strong>2 de Noviembre, 2024. Saldungaray.</strong></h3>
-					<p>Estás invitado a celebrar </p>
+					<h2>¡Mis 15!</h2>
 				</div>
 			</div>
-			<div class="couple-wrap animate-box">
-				<div class="half row text-center">
-					<div class="row col-sm-12 col-md-6">
-						<div id="circulo">
+			<div class="row">
+				<div class="display-t">
+					<div class="display-tc">
+						<div class="col-md-10 col-md-offset-1">
+										<ul class="event-card-list w-100">
+											<li class="col-md-6 col-sm-12 icon_wrapper">
+												 <img src="images/mapa.png" alt="">
+												<p>Roca 601, Saldungaray</p>
+											</li>
+											<li class="col-md-6 col-sm-12 icon_wrapper">
+												 <img src="images/location.png" alt="">
+												<p>Sociedad Española</p>
+											</li>	
+											<li class="col-md-6 col-sm-12 icon_wrapper">
+												 <img src="images/calendar.png" alt="">
+												<p>Sábado 2 de Noviembre</p>
+											</li>	
+											<li class="col-md-6 col-sm-12 icon_wrapper">
+												 <img src="images/reloj-de-mano.png" alt="">
+												<p>21:30hs</p>
+											</li>	
+											<li class="col-md-6 col-sm-12 icon_wrapper">
+												 <img src="images/vestido-de-novia.png" alt="">
+												<p>Elegante</p>
+											</li>		
+										</ul>
+										<p id="map_title">Como llego?</p>
+										<div style="border: 1px solid white;"></div>
+										<div class="text-center maps-button">
+											<!-- <button type="button" class="btn btn-date"><a style="color:black;" href="https://maps.app.goo.gl/v6jsSdv1gMaA3Ar16" target="_blank">ABRIR EN GOOGLE MAPS</a></button> -->
+											<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3135.1653453468543!2d-61.77246567880967!3d-38.20605776972193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ece615ecb47b51%3A0xe40adeab30923f42!2sAsociacion%20Espa%C3%B1ola%20Saldungaray!5e0!3m2!1ses!2sar!4v1727736687581!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
+										</div>
 						</div>
-					</div>
-					
-					<div class="col-md-6 col-sm-12 desc-groom">
-						<p>
-							Soy del signo <strong>Escorpio</strong>, me gusta <strong>cantar y tocar el piano</strong>. Me gusta pasar tiempo con mí familia y amigos. 
-							Mis pasatiempos favoritos son <strong>escuchar música y mirar series!</strong> Espero que disfrutes tanto de esta noche como yo. 
-							<strong>¡GRACIAS POR VENIR y ser parte de mis 15 años!</strong>
-						</p>	
-						<h3>Sol</h3>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div> -->
-
-	<div id="fh5co-evento" class="fh5co-bg">
+	</div>
+	<!-- Detalles evento backup -->
+	<!-- <div id="fh5co-evento" class="fh5co-bg">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row">
@@ -133,47 +138,41 @@
 					<div class="display-tc">
 						<div class="col-md-10 col-md-offset-1">
 								<div class="event-wrap animate-box">
-									<!-- <div class="col-md-6 col-sm-12"> -->
 										<h3 class="text-center"><strong>Party!</strong></h3>
 										<ul class="event-card-list">
 											<li class="col-md-6 col-sm-12 icon_wrapper">
-												<!-- <i class="icon-lista icon-map"></i> -->
 												 <img src="images/mapa.png" style="height:200px" alt="">
 												<p>Roca 601</p>"
 											</li>
 											<li class="col-md-6 col-sm-12 icon_wrapper">
-												<!-- <i class="icon-lista icon-location"></i> -->
 												 <img src="images/location.png" alt="">
 												<p>Sociedad Española</p>
 											</li>	
 											<li class="col-md-6 col-sm-12 icon_wrapper">
-												<!-- <i class="icon-lista icon-calendar"></i> -->
 												 <img src="images/calendar.png" alt="">
 												<p>Sábado 2 de Noviembre</p>
 											</li>	
 											<li class="col-md-6 col-sm-12 icon_wrapper">
-												<!-- <i class="icon-lista icon-clock"></i> -->
 												 <img src="images/reloj-de-mano.png" alt="">
 												<p>21:30hs</p>
 											</li>	
 											<li class="col-md-6 col-sm-12 icon_wrapper">
-												<!-- <i class="icon-lista icon-man"></i> -->
 												 <img src="images/vestido-de-novia.png" alt="">
 												<p>Elegante</p>
 											</li>		
 										</ul>
 										<div class="text-center maps-button">
-											<!-- <button type="button" class="btn btn-date"><a style="color:black;" href="https://maps.app.goo.gl/v6jsSdv1gMaA3Ar16" target="_blank">ABRIR EN GOOGLE MAPS</a></button> -->
+											//COMENTAR <button type="button" class="btn btn-date"><a style="color:black;" href="https://maps.app.goo.gl/v6jsSdv1gMaA3Ar16" target="_blank">ABRIR EN GOOGLE MAPS</a></button>
 											<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3114.4470232108324!2d-62.22991398490557!3d-38.68457479214178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95eda491e09a738f%3A0x255da54107216654!2sYesterday!5e0!3m2!1ses!2sar!4v1641428128945!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
 										</div>
-									<!-- </div> -->
 								</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<!-- Fin detalles evento -->
 
 	<!-- <div id="fh5co-evento" class="fh5co-bg">
 		<div class="overlay"></div>
@@ -214,40 +213,8 @@
 		</div>
 	</div> -->
 
-	<!-- Start Gallery -->
-	<!-- <div id="gallery" class="gallery-box">
-		<div class="container-fluid width-100">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="text-center galeria-heading">
-						<h2>¡Galería!</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row width-100 popup-gallery2">
-					<div class="img-container">
-						<img class="img-fluid" style="position: relative; bottom: 80px;" src="images/gallery/01.jpeg" alt="single image">
-					</div>
-					<div class="img-container">
-						<img class="img-fluid" style="position: relative; bottom: 25px; object-fit: cover; max-width: 440px;" src="images/gallery/02.jpeg" alt="single image">
-					</div>
-					<div class="img-container">
-						<img class="img-fluid" src="images/gallery/03.jpeg" style="object-fit: cover; max-width: 400px; position: relative; right: 50px;" alt="single image">
-					</div>
-					<div class="img-container">
-						<img class="img-fluid" style="position: relative; bottom: 70px;" src="images/gallery/04.jpeg" alt="single image">
-					</div>
-					<div class="img-container">
-						<img class="img-fluid" style="position: relative; bottom: 50px;" src="images/gallery/05.jpeg" alt="single image">
-					</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- End Gallery -->
-
-	<!-- <div id="fh5co-started" class="fh5co-bg div-form1" style="background-image:url(images/img_bg_4.jpg);"> -->
-	<div id="fh5co-started" class="fh5co-bg div-form1" style="background-color:#abebc6;">
-		<div class="overlay"></div>
+	<div id="fh5co-started" class="fh5co-bg div-form1" style="background-color:#fff;">
+		<!-- <div class="overlay"></div> -->
 		<div class="container width-100 text-center">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -258,11 +225,10 @@
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>¿Cuento con vos?</h2>
 					<!-- <p>Por favor, completá el formulario para notificar tu asistencia a la fiesta. Gracias!</p> -->
-					<span style="font-style:italic; color: white; font-size: 1em; display:block;margin-top: 10px;"><strong>Por favor, confirmar asistencia antes del 20 de Octubre.</strong></span>
+					<span style="font-style:italic; color: rgb(0, 0, 0); font-size: 1em; display:block;margin-top: 10px;"><strong>Por favor, confirmar asistencia antes del 20 de Octubre.</strong></span>
 				</div>
 			</div>
 			<div class="row animate-box width-100 mx-auto">
-				<!-- <div class="col-md-10 col-md-offset-1 d-flex-center"> -->
 				<div class="confirmation-buttons">
 						<form style="width: 100%; max-width: 1200px; margin: auto;">
 						 <div class="col-md-12 col-sm-12">
