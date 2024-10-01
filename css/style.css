@@ -2096,9 +2096,9 @@ footer{
   font-weight: bold;
   text-align: center;
   color: white;
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   font-family: 'champagne';
 }
+
 
 #map_title {
   font-family: "authentic-signature";
@@ -2106,7 +2106,6 @@ footer{
   color: white;
   text-align:center;
   margin:0;
-  /* text-decoration: underline; */
 }
 
 .event-card-list {
@@ -2115,6 +2114,19 @@ footer{
 
 .event-card-list img {
   height: 150px;
+}
+
+ #confirm_button {
+  margin-top: 1.5rem;
+ }
+
+@media screen and (max-width:768px) {
+  .icon_wrapper p {
+    font-size: 1.7em;
+  }
+  .event-card-list img {
+    height: 120px;
+  }
 }
 
 .icon-lista {
@@ -2464,6 +2476,13 @@ header::after{
   z-index: 999;
 }
 
+
+@media screen and (max-width: 768px) {
+  .elemento {
+    bottom: 180px;
+  }
+}
+
 .animatedColor {
   color: #cf9457;
 }
@@ -2472,6 +2491,7 @@ header::after{
 animation: arrow 1s ease-in-out infinite;
 font-size:5rem;
 }
+
 
 .flecha:hover{
 animation:arrow 1s ease-out infinite !important;
