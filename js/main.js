@@ -185,21 +185,48 @@
     }
   };
 
+  const moveArrow = () => {
+    const flecha = document.querySelector(".elemento")
+    let half = Math.ceil(window.innerWidth / 2)
+    flecha.style.left = half + "px"
+  }
+
+  window.onload = moveArrow
+  window.onresize = moveArrow
+
   // Parallax
   var parallax = function () {
     $(window).stellar();
   };
 
   // Formulario
-  function newsletterFormFunctions() {
-	NewsletterConfig.email = '';
-	NewsletterConfig.name = 'Test';
-	console.log('Enter Here');
+  async function cargarInvitado(data) {
+    let objInvitado = new Invitado()
+    console.log(await objInvitado.add(data.asiste, data.nombre, data.cantidad, data.menu))
   }
-  $(document).ready(function() {
-	$('form.form-newsletter input[type="submit"]').click(function(evt) {
-	  validateForm();
-	});	
+
+  function validateForm(){
+    if(!["S", "N"].includes(document.getElementById("asistencia").value)){
+      document.getElementById("asistencia").style.border = "1px solid red"
+      return false
+    }
+    return true
+  }
+
+  document.querySelector("form").addEventListener("submit", (e) => {
+    e.preventDefault()
+    if(validateForm()){
+      let button = document.querySelector("#confirm_button")
+      button.innerText = "Cargando ..."
+      const data = Object.fromEntries(new FormData(e.target))
+      cargarInvitado(data)
+      .then(res => {
+        button.innerText = "Confirmación cargada!"
+        button.disabled = "true"})
+      .catch(err => {
+        button.innerText = "No se pudo enviar la confirmación. Intente luego."
+        button.disabled = "true"})
+    }})
   
 	function guardarInvitacion() {
 		console.log("entro")
@@ -207,59 +234,53 @@
 	  $('form.form-newsletter input[type="submit"]').val('LOADING');
 	  NewsletterConfig.email = $('form.form-newsletter input.input-type').val();
 	}
-  });
 
 
   // Firebase
   class Invitado {
     invitadosRef = db.collection("invitados");
 
-    async add(name, password, email) {
-      const user = { name, password, email };
+    async add(asiste, nombre, cantidad, menu) {
+      const invitado = { asiste, nombre, cantidad, menu };
 
       try {
-        const docRef = await this.usersRef.add(user);
+        const docRef = await this.invitadosRef.add(invitado);
         console.log("User Added with ID: ", docRef.id);
-        user.id = docRef.id;
+        invitado.id = docRef.id;
       } catch (error) {
         console.error("Error Adding User: ", error);
       }
-
-      return user;
+      return invitado;
     }
 
     async getAll() {
       const invitados = [];
-
       try {
         const snapshot = await this.invitadosRef.get();
         snapshot.forEach((doc) => invitados.push({ id: doc.id, ...doc.data() }));
       } catch (err) {
-        console.error("Error Getting Users: ", error);
+        console.error("Error Getting Invitados: ", error);
       }
-
       return invitados;
     }
 
     async get(id) {
-      let user;
-
+      let invitado;
       try {
-        let doc = await this.usersRef.doc(id).get();
+        let doc = await this.invitadosRef.doc(id).get();
 
-        if (doc.exists) user = { id: doc.id, ...doc.data() };
+        if (doc.exists) invitado = { id: doc.id, ...doc.data() };
         else console.log("No document found with id: ", id);
       } catch (error) {
-        console.error("Error in getting user: ", error);
+        console.error("Error in getting invitado: ", error);
       }
-
-      return user;
+      return invitado;
     }
   }
 
   async function main() {
-    const userObj = new Invitado();
-    console.log(await userObj.getAll());
+    let test = new Invitado()
+    console.log(await test.getAll())
   }
 
   $(function () {	

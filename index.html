@@ -22,7 +22,7 @@
 	<meta name="twitter:url" content="https://los15desol.vercel.app/" />
 	<meta name="twitter:image" content="https://us.123rf.com/450wm/nikelser/nikelser2006/nikelser200601232/148614576-celebraci%C3%B3n-de-saludo-rosa-de-lujo-quince-a%C3%B1os-cumplea%C3%B1os-aniversario-n%C3%BAmero-15-globo-de-oro-de-la-h.jpg?ver=6" />
 	<meta property="og:image" content="https://us.123rf.com/450wm/nikelser/nikelser2006/nikelser200601232/148614576-celebraci%C3%B3n-de-saludo-rosa-de-lujo-quince-a%C3%B1os-cumplea%C3%B1os-aniversario-n%C3%BAmero-15-globo-de-oro-de-la-h.jpg?ver=6"/>
-
+	<link rel="stylesheet" href="fonts/fontawesome/css/all.css">
 	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,400italic,700' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css?family=Sacramento" rel="stylesheet">
 	
@@ -57,17 +57,20 @@
 	
 	<div id="page">
 
-	<header id="fh5co-header" class="fh5co-cover" role="banner" data-stellar-background-ratio="0.5"">
+	<header id="fh5co-header" class="fh5co-cover" role="banner" data-stellar-background-ratio="0.5">
 		<!-- <div class="overlay"></div> -->
+		<div class="elemento">
+            <a title="Ir abajo!" class="menuPpal suavizado" href="#fh5co-evento"><i class="fa fa-angle-down flecha animatedColor" aria-hidden="true"></i> </a>
+        </div>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center">
-					<div class="display-t" style="margin-top: 5em;">
+					<div class="display-t">
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1 class="name-header">Sol</h1>
 							<h2><strong style="color:black;">¡Acompañame a festejar mis 15!</strong></h2>
 							<div style="margin-top: 3em;" class="simply-countdown simply-countdown-one"></div>
-							<p><a  style="margin-top: 1em;" class="btn btn-date" target="_blank" href="https://calendar.google.com/event?action=TEMPLATE&tmeid=MmJ0c2x0ZTJoM2ZyaHZxZmJoMGt2ODE3N3Agcm9zc2Rlc2lnbm9ra0Bt&tmsrc=rossdesignokk%40gmail.com">Save the date</a></p>
+							<p><a  style="margin-top: 1em;" class="btn btn-date btn-save-date" target="_blank" href="">Save the date</a></p>
 							<!-- <small style="color: #FFF; position: relative; top: -10px; background-color: rgba(207,148,87,0.7); padding: 5px 10px; border-radius: 100px;">Creá un recordatorio en Google Calendar!</small> -->
 						</div>
 					</div>
@@ -82,7 +85,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<h2>¡Mis 15!</h2>
+					<h2 style="font-size: 75px;">¡Mis 15!</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -104,7 +107,7 @@
 											</li>	
 											<li class="col-md-6 col-sm-12 icon_wrapper">
 												 <img src="images/reloj-de-mano.png" alt="">
-												<p>21:30hs</p>
+												<p id="horario"></p>
 											</li>	
 											<li class="col-md-6 col-sm-12 icon_wrapper">
 												 <img src="images/vestido-de-novia.png" alt="">
@@ -123,98 +126,9 @@
 			</div>
 		</div>
 	</div>
-	<!-- Detalles evento backup -->
-	<!-- <div id="fh5co-evento" class="fh5co-bg">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<span>Evento especial</span>
-					<h2>¡Mis 15!</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="display-t">
-					<div class="display-tc">
-						<div class="col-md-10 col-md-offset-1">
-								<div class="event-wrap animate-box">
-										<h3 class="text-center"><strong>Party!</strong></h3>
-										<ul class="event-card-list">
-											<li class="col-md-6 col-sm-12 icon_wrapper">
-												 <img src="images/mapa.png" style="height:200px" alt="">
-												<p>Roca 601</p>"
-											</li>
-											<li class="col-md-6 col-sm-12 icon_wrapper">
-												 <img src="images/location.png" alt="">
-												<p>Sociedad Española</p>
-											</li>	
-											<li class="col-md-6 col-sm-12 icon_wrapper">
-												 <img src="images/calendar.png" alt="">
-												<p>Sábado 2 de Noviembre</p>
-											</li>	
-											<li class="col-md-6 col-sm-12 icon_wrapper">
-												 <img src="images/reloj-de-mano.png" alt="">
-												<p>21:30hs</p>
-											</li>	
-											<li class="col-md-6 col-sm-12 icon_wrapper">
-												 <img src="images/vestido-de-novia.png" alt="">
-												<p>Elegante</p>
-											</li>		
-										</ul>
-										<div class="text-center maps-button">
-											//COMENTAR <button type="button" class="btn btn-date"><a style="color:black;" href="https://maps.app.goo.gl/v6jsSdv1gMaA3Ar16" target="_blank">ABRIR EN GOOGLE MAPS</a></button>
-											<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3114.4470232108324!2d-62.22991398490557!3d-38.68457479214178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95eda491e09a738f%3A0x255da54107216654!2sYesterday!5e0!3m2!1ses!2sar!4v1641428128945!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>
-										</div>
-								</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
 	<!-- Fin detalles evento -->
 
-	<!-- <div id="fh5co-evento" class="fh5co-bg">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
-					<span>Evento especial</span>
-					<h2>¡Mis 15!</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="display-t">
-					<div class="display-tc">
-						<div class="col-md-10 col-md-offset-1">
-								<div class="event-wrap animate-box">
-									<div class="col-md-6 col-sm-12">
-										<h3 class="text-center"><strong>Party!</strong></h3>
-										<ul class="event-card-list">
-											<li><i class="icon-lista icon-clock"></i><span>21:30hs</span></li>	
-											<li><i class="icon-lista icon-calendar"></i><span>Sábado 2 de Noviembre</span></li>	
-											<li><i class="icon-lista icon-location"></i><span>Sociedad Española</span></li>	
-											<li><i class="icon-lista icon-map"></i><span>Roca 601</span></li>
-											<li><i class="icon-lista icon-man"></i><span>Elegante</span></li>		
-										</ul>
-										<div class="text-center maps-button">
-											<button type="button" class="btn btn-date"><a style="color:black;" href="https://maps.app.goo.gl/v6jsSdv1gMaA3Ar16" target="_blank">ABRIR EN GOOGLE MAPS</a></button>
-											<--<iframe id="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3114.4470232108324!2d-62.22991398490557!3d-38.68457479214178!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95eda491e09a738f%3A0x255da54107216654!2sYesterday!5e0!3m2!1ses!2sar!4v1641428128945!5m2!1ses!2sar" allowfullscreen="" loading="lazy"></iframe>--*>
-										</div>
-									</div>
-									<div class="col-md-6 col-sm-12 salon-fiesta">
-										<img id="map" src="images/montesion.jpg">
-									</div>
-								</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
-
 	<div id="fh5co-started" class="fh5co-bg div-form1" style="background-color:#fff;">
-		<!-- <div class="overlay"></div> -->
 		<div class="container width-100 text-center">
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
@@ -224,7 +138,6 @@
 			<div class="row animate-box">
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading">
 					<h2>¿Cuento con vos?</h2>
-					<!-- <p>Por favor, completá el formulario para notificar tu asistencia a la fiesta. Gracias!</p> -->
 					<span style="font-style:italic; color: rgb(0, 0, 0); font-size: 1em; display:block;margin-top: 10px;"><strong>Por favor, confirmar asistencia antes del 20 de Octubre.</strong></span>
 				</div>
 			</div>
@@ -236,8 +149,8 @@
 								<label for="asiste" class="sr-only">¿Vas a asistir?</label>
 								<select name="asiste" class="form-control form-control-select" id="asistencia" required>
 									<option disabled selected>¿Vas a asistir?</option>
-									<option value="Si">Si</option>
-									<option value="No">No</option>
+									<option value="S">Si</option>
+									<option value="N">No</option>
 								</select>
 							</div>
 						</div>
@@ -259,7 +172,7 @@
 								<input type="text" class="form-control" name="menu" id="menu" placeholder="¿Necesitas algún menú especial? ¿Cuál? Ej: Un menú celíaco. (Opcional)">
 							</div>
 						</div> 
-						<button class="mx-auto btn btn-date" type='submit'>Confirmar</button>
+						<button class="mx-auto btn btn-date" id="confirm_button" type='submit'>Confirmar</button>
 					</form>
 					
 				</div> 
@@ -287,7 +200,6 @@
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
 
-	<script src=js/form.js></script>
 	<script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -312,17 +224,26 @@
 	<script src="js/simplyCountdown.js"></script>
 	<!-- Main -->
 	<script src="js/main.js"></script>
-	<!-- <script type="module" src="src/app.js"></script>
-	<script src="src/controller.js"></script>
-	<script src="src/routes.js"></script> -->
 <script>
-	// default example
-    simplyCountdown('.simply-countdown-one', {
+	let hours = 0
+	let minutes = 0
+	let urlParams = new URLSearchParams(window.location.search)
+	hours = urlParams.get("hora").split("_")[0]
+	minutes = urlParams.get("hora").split("_")[1]
+
+	document.getElementById("horario").innerText = `${hours}:${minutes}hs`
+	
+	let link21 = "https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=MTY5ZHVlODhndmM1anBqcTlxZHJzNDk0YnQgcm9zc2Rlc2lnbm9ra0Bt&tmsrc=rossdesignokk%40gmail.com"
+	let link00 = "https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NmE0aG8yZGJtb244YW9uOWZpMjdjMGE5bTQgcm9zc2Rlc2lnbm9ra0Bt&tmsrc=rossdesignokk%40gmail.com"
+	document.querySelector(".btn-save-date").href = hours == 0 ? link00 : link21
+	
+	hours = Number(hours) == 0 ? 24 : Number(hours) // Para que se muestre bien en la cuenta regresiva
+	simplyCountdown('.simply-countdown-one', {
         year: 2024,
         month: 11,
         day: 2,
-		hours: 18,
-		minutes: 30,
+		hours: hours - 3,
+		minutes: minutes,
     });
 </script>
 	</body>
