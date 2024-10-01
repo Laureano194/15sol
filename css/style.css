@@ -2489,3 +2489,7 @@ transform: translate(0px, 60px);
 transform: translate(0px, 50px);
 }
 }
+
+.border-danger {
+  border: 1px solid red !important;
+}

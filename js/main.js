@@ -207,11 +207,21 @@
 
   function validateForm(){
     if(!["S", "N"].includes(document.getElementById("asistencia").value)){
-      document.getElementById("asistencia").style.border = "1px solid red"
+      document.getElementById("asistencia").classList.add("border-danger")
       return false
     }
     return true
   }
+  function resetForm() {
+    document.getElementById("asistencia").classList.remove("border-danger")
+    document.getElementById("cantidad").classList.remove("border-danger")
+    document.getElementById("nombre").classList.remove("border-danger")
+    document.getElementById("menu").classList.remove("border-danger")
+    document.getElementById("asistencia").value = "X"
+    document.getElementById("cantidad").value = ""
+    document.getElementById("nombre").value = ""
+    document.getElementById("menu").value = ""
+   }
 
   document.querySelector("form").addEventListener("submit", (e) => {
     e.preventDefault()
@@ -226,6 +236,7 @@
       .catch(err => {
         button.innerText = "No se pudo enviar la confirmación. Intente luego."
         button.disabled = "true"})
+      .finally(() => resetForm())
     }})
   
 	function guardarInvitacion() {
