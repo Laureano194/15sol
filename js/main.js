@@ -290,8 +290,6 @@
   }
 
   async function main() {
-    let test = new Invitado()
-    console.log(await test.getAll())
   }
 
   $(function () {	
