@@ -199,98 +199,6 @@
     $(window).stellar();
   };
 
-  // Formulario
-  async function cargarInvitado(data) {
-    let objInvitado = new Invitado()
-    console.log(await objInvitado.add(data.asiste, data.nombre, data.cantidad, data.menu))
-  }
-
-  function validateForm(){
-    if(!["S", "N"].includes(document.getElementById("asistencia").value)){
-      document.getElementById("asistencia").classList.add("border-danger")
-      return false
-    }
-    return true
-  }
-  function resetForm() {
-    document.getElementById("asistencia").classList.remove("border-danger")
-    document.getElementById("cantidad").classList.remove("border-danger")
-    document.getElementById("nombre").classList.remove("border-danger")
-    document.getElementById("menu").classList.remove("border-danger")
-    document.getElementById("asistencia").value = "X"
-    document.getElementById("cantidad").value = ""
-    document.getElementById("nombre").value = ""
-    document.getElementById("menu").value = ""
-   }
-
-  document.querySelector("form").addEventListener("submit", (e) => {
-    e.preventDefault()
-    if(validateForm()){
-      let button = document.querySelector("#confirm_button")
-      button.innerText = "Cargando ..."
-      const data = Object.fromEntries(new FormData(e.target))
-      cargarInvitado(data)
-      .then(res => {
-        button.innerText = "Confirmación cargada!"
-        button.disabled = "true"})
-      .catch(err => {
-        button.innerText = "No se pudo enviar la confirmación. Intente luego."
-        button.disabled = "true"})
-      .finally(() => resetForm())
-    }})
-  
-	function guardarInvitacion() {
-		console.log("entro")
-	  $('form.form-newsletter input[type="submit"]').prop('disabled', true);
-	  $('form.form-newsletter input[type="submit"]').val('LOADING');
-	  NewsletterConfig.email = $('form.form-newsletter input.input-type').val();
-	}
-
-
-  // Firebase
-  class Invitado {
-    invitadosRef = db.collection("invitados");
-
-    async add(asiste, nombre, cantidad, menu) {
-      const invitado = { asiste, nombre, cantidad, menu };
-
-      try {
-        const docRef = await this.invitadosRef.add(invitado);
-        console.log("User Added with ID: ", docRef.id);
-        invitado.id = docRef.id;
-      } catch (error) {
-        console.error("Error Adding User: ", error);
-      }
-      return invitado;
-    }
-
-    async getAll() {
-      const invitados = [];
-      try {
-        const snapshot = await this.invitadosRef.get();
-        snapshot.forEach((doc) => invitados.push({ id: doc.id, ...doc.data() }));
-      } catch (err) {
-        console.error("Error Getting Invitados: ", error);
-      }
-      return invitados;
-    }
-
-    async get(id) {
-      let invitado;
-      try {
-        let doc = await this.invitadosRef.doc(id).get();
-
-        if (doc.exists) invitado = { id: doc.id, ...doc.data() };
-        else console.log("No document found with id: ", id);
-      } catch (error) {
-        console.error("Error in getting invitado: ", error);
-      }
-      return invitado;
-    }
-  }
-
-  async function main() {
-  }
 
   $(function () {	
     mobileMenuOutsideClick();
@@ -304,6 +212,5 @@
     loaderPage();
     counter();
     counterWayPoint();
-    main();
   });
 })();
