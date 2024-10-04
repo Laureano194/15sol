@@ -50,7 +50,8 @@ async function print() {
             let td = document.createElement("td")
             td.innerText = confirmado[key]
             if(key == "asiste") {
-              td.innerHTML = confirmado["asiste"] =="S" ? "<i class='fa-solid fa-check'></i>" : "<i class='fa-solid fa-x'></i>" 
+              td.innerHTML = confirmado["asiste"] =="S" ? "✓" : "<i class='fa-solid fa-x'></i>" 
+              td.style.textAlign = "center"
             }
             tr.appendChild(td)
         }
@@ -68,4 +69,33 @@ function mostrarTotal(confirmados){
 async function cargarInvitado(data) {
     let objInvitado = new Invitado()
     console.log(await objInvitado.add(data.asiste, data.nombre, data.cantidad, data.menu))
+}
+
+async function downloadXLSX() {
+  let objInvitado = new Invitado()
+  let confirmados = await objInvitado.getAll()
+  let filtrados = confirmados.map((confirmado) => {
+    return {nombre: confirmado.nombre, asiste: confirmado.asiste, cantidad: confirmado.cantidad, menu: confirmado.menu}
+  })
+  const worksheet = XLSX.utils.json_to_sheet(filtrados);
+  const workbook = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(workbook, worksheet, "Confirmados");
+
+  /* fix headers */
+  XLSX.utils.sheet_add_aoa(worksheet, [["Nombre", "Asiste", "Cantidad", "Menu Especial"]], { origin: "A1" });
+
+  /* calculate column width */
+  const max_width = confirmados.reduce((w, r) => Math.max(w, r.nombre.length), 10);
+  worksheet["!cols"] = [ { wch: max_width } ];
+
+  /* create an XLSX file and try to save to Presidents.xlsx */
+  XLSX.writeFile(workbook, "Confirmados.xlsx", { compression: true });
+
+}
+
+let xlsxButton = document.getElementById("dwnldxlsx")
+if (xlsxButton) {
+  xlsxButton.addEventListener("click", () => {
+    downloadXLSX()
+  })
 }
